@@ -437,6 +437,15 @@ header img {
 
 /* ── CATEGORIA ── */
 .category-section { margin-bottom: 8px; }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 4px;
+}
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
 .category-label {
   font-size: 0.7rem;
   font-weight: 900;
@@ -454,6 +463,59 @@ header img {
   flex: 1;
   height: 1px;
   background: var(--border);
+}
+
+/* ── PÁGINA DO CARRINHO ── */
+.cart-page {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 500;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.cart-page.open {
+  display: block;
+  animation: slideInRight 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0.6; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.cart-page-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+.cart-page-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--navy);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.cart-back-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.cart-back-btn:active { background: rgba(255,255,255,0.3); }
+.cart-page-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  flex: 1;
 }
 
 /* ── PRODUCT CARD ── */
